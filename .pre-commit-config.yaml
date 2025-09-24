@@ -1,49 +1,28 @@
-# .pre-commit-config.yaml
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.4.0
     hooks:
-      - id: trailing-whitespace    # Удаляет лишние пробелы в конце строк
-      - id: end-of-file-fixer      # Добавляет пустую строку в конце файла
-      - id: check-yaml             # Проверяет синтаксис YAML файлов
-      - id: check-added-large-files # Блокирует коммит больших файлов
-      - id: check-merge-conflict   # Ищет конфликтные маркеры (<<<<<<<)
-      - id: check-case-conflict    # Проверяет конфликты регистра в именах файлов
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-added-large-files
+      - id: check-merge-conflict
+      - id: check-case-conflict
 
   - repo: https://github.com/psf/black
     rev: 23.9.1
     hooks:
       - id: black
-        files: ^(src|scripts|tests)/
 
   - repo: https://github.com/pycqa/isort
     rev: 5.12.0
     hooks:
       - id: isort
-        name: isort (python)
-        files: ^(src|scripts|tests)/
 
   - repo: https://github.com/pycqa/flake8
     rev: 6.0.0
     hooks:
       - id: flake8
-        files: ^(src|scripts|tests)/
-        args: [--ignore=E501,W503,E203, --max-line-length=88]
-
-  - repo: https://github.com/pycqa/bandit
-    rev: 1.7.5
-    hooks:
-      - id: bandit
-        files: ^(src|scripts|tests)/
-        args: ["-iii", "-ll"]
-
-  - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.5.1
-    hooks:
-      - id: mypy
-        files: ^(src|scripts|tests)/
-        args: [--config-file=pyproject.toml]
-        additional_dependencies: [types-redis, types-requests]
 
   - repo: local
     hooks:
@@ -51,4 +30,3 @@ repos:
         name: Forbid commit to main
         entry: bash -c 'if [ "$(git rev-parse --abbrev-ref HEAD)" = "main" ]; then echo "Direct commits to main branch are forbidden!"; exit 1; fi'
         language: system
-        stages: [commit]

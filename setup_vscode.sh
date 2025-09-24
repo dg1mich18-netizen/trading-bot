@@ -81,7 +81,7 @@ install_vscode_extensions() {
         "redhat.vscode-yaml"
         "ms-vscode.vscode-json"
     )
-    
+
     for extension in "${extensions[@]}"; do
         echo "📦 Устанавливаю: $extension"
         if code --install-extension "$extension" --force; then
@@ -96,7 +96,7 @@ install_vscode_extensions() {
 setup_vscode() {
     echo "🔧 Настраиваю VSCode..."
     mkdir -p .vscode
-    
+
     cat > .vscode/settings.json << 'EOL'
 {
     "python.defaultInterpreterPath": ".venv/bin/python",

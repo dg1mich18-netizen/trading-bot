@@ -1,6 +1,5 @@
+from pydantic import Field, PostgresDsn, RedisDsn
 from pydantic_settings import BaseSettings
-from pydantic import Field, RedisDsn, PostgresDsn
-from typing import Optional
 
 
 class Settings(BaseSettings):
@@ -13,11 +12,10 @@ class Settings(BaseSettings):
     # Database URLs
     DATABASE_URL: PostgresDsn = Field(
         "postgresql://postgres:password@localhost:5432/trading_bot",
-        description="URL for PostgreSQL connection"
+        description="URL for PostgreSQL connection",
     )
     REDIS_URL: RedisDsn = Field(
-        "redis://localhost:6379/0",
-        description="URL for Redis connection"
+        "redis://localhost:6379/0", description="URL for Redis connection"
     )
 
     # Trading Settings
@@ -26,7 +24,7 @@ class Settings(BaseSettings):
 
     class Config:
         env_file = ".env"
-        case_sensitive = False  # Разрешено использовать как UPPER_CASE, так и lower_case в .env
+        case_sensitive = False
 
 
 # Создаем глобальный экземпляр настроек
