@@ -1,0 +1,4 @@
+# SOPS configuration file
+creation_rules:
+  - path_regex: \.enc$
+    age: "age1k028as3mgxe8p8ldx2f96qsyf5e47jgnywk0rk6p4dhxu9d799ysy97yez"
