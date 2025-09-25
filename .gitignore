@@ -50,3 +50,26 @@ logs/
 
 # Docker
 docker-compose.override.yml
+
+
+
+
+# =============================================
+# Trading Bot Specific Ignore Rules
+# =============================================
+
+# Environment files - НЕ коммитить секреты!
+.env
+.env.local
+.env.backup
+
+# Encrypted files (except the one we want to commit)
+# !.env.enc  # раскомментировать если хотим коммитить зашифрованный файл
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.env
